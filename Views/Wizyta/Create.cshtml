@@ -1,0 +1,59 @@
+﻿@model TaskManager.Models.WizytaModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Dodaj wizytę</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <label asp-for="Nazwa" class="control-label"></label>
+                @Html.DropDownListFor(model => model.Nazwa, ViewBag.WyborWizyty as SelectList, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="JoinDate" class="control-label"></label>
+                <input asp-for="JoinDate" class="form-control" />
+                <span asp-validation-for="JoinDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpisBadania" class="control-label"></label>
+                <input asp-for="OpisBadania" class="form-control" />
+                <span asp-validation-for="OpisBadania" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImiePacjenta" class="control-label"></label>
+                <input asp-for="ImiePacjenta" class="form-control" />
+                <span asp-validation-for="ImiePacjenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NazwiskoPacjenta" class="control-label"></label>
+                <input asp-for="NazwiskoPacjenta" class="form-control" />
+                <span asp-validation-for="NazwiskoPacjenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PeselPacjenta" class="control-label"></label>
+                <input asp-for="PeselPacjenta" class="form-control" />
+                <span asp-validation-for="PeselPacjenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Dodaj wizytę" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Wróć do listy</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

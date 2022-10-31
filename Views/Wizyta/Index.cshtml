@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TaskManager.Models.WizytaModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Menadżer Wizyt</h1>
+
+<p>
+    <a asp-action="Create">Dodaj Wizyte</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JoinDate)
+            </th>
+          
+            
+         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoinDate)
+            </td>
+           
+        
+           
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.WizytaId }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Szczegóły wizyty", "Details", new { id = item.WizytaId }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Usyń wizytę", "Delete", new { id = item.WizytaId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
